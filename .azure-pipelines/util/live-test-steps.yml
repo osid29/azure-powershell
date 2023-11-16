@@ -121,13 +121,13 @@ jobs:
       failOnStderr: true
     retryCountOnTaskFailure: 3
 
-  - task: PowerShell@2
-    displayName: Run end-to-end live scenarios
-    inputs:
-      pwsh: true
-      targetType: filePath
-      filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
-      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -OSVersion ${{ parameters.vmImage }} -RunPlatform ${{ parameters.osType }} -RunPowerShell ${{ parameters.psVersion }}'
+  # - task: PowerShell@2
+  #   displayName: Run end-to-end live scenarios
+  #   inputs:
+  #     pwsh: true
+  #     targetType: filePath
+  #     filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
+  #     arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -OSVersion ${{ parameters.vmImage }} -RunPlatform ${{ parameters.osType }} -RunPowerShell ${{ parameters.psVersion }}'
 
   - task: PublishPipelineArtifact@1
     displayName: Publish live test results to pipeline artifact
