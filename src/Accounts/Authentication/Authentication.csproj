@@ -9,6 +9,7 @@
   <PropertyGroup>
     <AssemblyName>Microsoft.Azure.PowerShell.Authentication</AssemblyName>
     <RootNamespace>$(LegacyAssemblyPrefix)Common.Authentication</RootNamespace>
+    <NoWarn>NU1903</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

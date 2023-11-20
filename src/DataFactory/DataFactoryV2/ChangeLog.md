@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.18.0
 * Added support GoogleAds and LakeHouse in ADF
 * Added support copyComputeScale And pipelineExternalComputeScale in `Set-AzDataFactoryV2IntegrationRuntime` Command
 
