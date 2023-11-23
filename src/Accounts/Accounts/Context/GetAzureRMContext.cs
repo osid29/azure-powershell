@@ -103,9 +103,10 @@ namespace Microsoft.Azure.Commands.Profile
                 var profile = DefaultProfile as AzureRmProfile;
                 if (profile != null && profile.Contexts != null)
                 {
-                    foreach (var context in profile.Contexts)
+                    var psContext = profile.Contexts.Select(context => new PSAzureContext(context.Value));
+                    foreach (var context in psContext.OrderBy(context => context.Tenant.Id).ThenBy(context => context.Subscription.Name))
                     {
-                        WriteContext(context.Value, context.Key);
+                        WriteObject(context);
                     }
                 }
 

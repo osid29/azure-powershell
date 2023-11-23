@@ -85,9 +85,9 @@ namespace FormatPs1XmlGenerator
                 var result = ps.Invoke();
                 var moduleInfo = (Hashtable)result[0].BaseObject;
                 if (moduleInfo == null) return list;
-                var nestedModules = (object[])moduleInfo["NestedModules"];
+                var nestedModule = "Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll";//(object[])moduleInfo["NestedModules"];
                 var moduleBase = Path.GetDirectoryName(manifestPath) ?? throw new InvalidOperationException("Unable to get module base directory from the manifest path");
-                list.AddRange(nestedModules.Select(nestedModule => Path.GetFullPath(Path.Combine(moduleBase, nestedModule.ToString()))));
+                list.Add(Path.GetFullPath(Path.Combine(moduleBase, nestedModule)));
             }
 
             return list;

@@ -54,6 +54,9 @@
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription</TypeName>
       </ViewSelectedBy>
+		<GroupBy>
+			<PropertyName>TenantId</PropertyName>
+		</GroupBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
@@ -63,10 +66,6 @@
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>Id</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>TenantId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
@@ -83,10 +82,6 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Id</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>TenantId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
@@ -150,52 +145,39 @@
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext</TypeName>
       </ViewSelectedBy>
+		<GroupBy>
+			<ScriptBlock>$_.Tenant.Id</ScriptBlock>
+			<Label>TenantId</Label>
+		</GroupBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Width>40</Width>
-            <Alignment>Left</Alignment>
-            <Label>Name</Label>
-          </TableColumnHeader>
+			<TableColumnHeader>
+				<Alignment>Left</Alignment>
+				<Label>SubscriptionName</Label>
+			</TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>Account</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>SubscriptionName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
             <Label>Environment</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>TenantId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>Account</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <ScriptBlock>$_.Subscription.Name</ScriptBlock>
-              </TableColumnItem>
+				<TableColumnItem>
+					<Alignment>Left</Alignment>
+					<ScriptBlock>$_.Subscription.Name</ScriptBlock>
+				</TableColumnItem>
+				<TableColumnItem>
+					<Alignment>Left</Alignment>
+					<PropertyName>Account</PropertyName>
+				</TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Environment</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <ScriptBlock>$_.Tenant.ToString()</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
